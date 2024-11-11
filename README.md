@@ -1,7 +1,8 @@
 # Ex-6-IMPLEMENTATION-OF-THE-BACK-END-OF-THE-COMPILER-
 IMPLEMENTATION OF THE BACK END OF THE COMPILER 
-# NAME: Santhiya S
-# REG NO: 212223220098
+# Date :05-11-24
+# NAME:S.Santhiya
+# Reg.No:212223220098
 # Aim :
 To write a program to implement the back end of the compiler.
 # ALGORITHM
@@ -12,56 +13,47 @@ To write a program to implement the back end of the compiler.
 5. Target code for the given statement is produced.
 6. Stop the program.
 # PROGRAM
-# PROGRAM 1:
-    #include<stdio.h>  
-    #include<conio.h>  
-    #include<ctype.h>  
-    #include<stdlib.h>  
-    void main() 
-    { 
-    int i=2,j=0,k=2,k1=0; char ip[10],kk[10]; FILE *fp; 
-    //clrscr();
-    printf("\nEnter the filename of the intermediate code");  
-    scanf("%s",kk); 
-    fp=fopen(kk,"r"); if(fp==NULL) 
-    { 
-    printf("\nError in opening the file");  
-    getch(); 
-    } 
-    //clrscr();  
-    while(!feof(fp)) 
-    { 
-    fscanf(fp,"%s\n",ip);  
-    
-    printf("\t\t%s\n",ip); 
-    } 
-    rewind(fp); 
-    printf("\n \n");  
-    printf("\tStatement\t\tTarget Code\n"); 
-    printf("\n \n"); 
-    while(!feof(fp)) 
-    { 
-    fscanf(fp,"%s",ip); 
-    printf("\t%s",ip); 
-    printf("\t\tMOV %c,R%d\n\t",ip[i+k],j);  
-    if(ip[i+1]=='+') 
-    printf("\t\tADD"); else printf("\t\tSUB");  
-    if(islower(ip[i])) 
-    printf("%c,R%d\n\n",ip[i+k1],j);  
-    else  
-    printf("%c,%c\n",ip[i],ip[i+2]);  
-    j++; 
-    k1=2; k=0; 
-    } 
-    printf("\n       \n"); 
-    getch(); 
-    fclose(fp); 
-    } 
-
-# PROGRAM 2:
-    X=a-b Y=a-c Z=a+b C=a-b C=a-b
+```
+#include <stdio.h>
+#include <ctype.h>
+#include <stdlib.h>
+int main()
+{
+    int i = 2, j = 0, k = 2, k1 = 0;
+    char ip[10], kk[10];
+    FILE *fp;
+    printf("Enter the filename of the intermediate code: ");
+    scanf("%s", kk);
+    fp = fopen(kk, "r");
+    if (fp == NULL) {
+        printf("\nError in opening the file\n");
+        return 1;
+    }
+    printf("\nStatement\tTarget Code\n\n");
+    while (fscanf(fp, "%s", ip) != EOF)
+    {
+        printf("%s\tMOV %c,R%d SUB ", ip, ip[i + k], j);
+        if (ip[i + 1] == '+')
+            printf("ADD ");
+        else
+            printf("SUB ");
+        if (islower(ip[i]))
+            printf("%c,R%d\n", ip[i + k1], j);
+        else
+            printf("%c,%c\n", ip[i], ip[i + 2]);
+        j++;
+        k1 = 2;
+        k = 0;
+    }
+    fclose(fp);
+    return 0;
+}
+```
 # OUTPUT
-![image](https://github.com/user-attachments/assets/8d06404d-0dfe-436d-83d4-b69f20288f37)
+![image](https://github.com/user-attachments/assets/110fc020-66d9-443a-a5ed-99ffe2f93c0d)
+
+## Program Output:
+![image](https://github.com/user-attachments/assets/fb72d23a-3865-4853-80ed-3b5ad58fe3a6)
 
 # Result
 The back end of the compiler is implemented successfully, and the output is verified.
